@@ -13,4 +13,6 @@ abstract class AppRoutes {
   static const CHECKOUT = '/checkout';
   static const ROOM_DETAIL = '/room-detail';
   static const HOMEPAGE = '/homepage';
+  static const KOS = '/kos';
+  static const KOS_DETAIL = '/kos-detail';
 }

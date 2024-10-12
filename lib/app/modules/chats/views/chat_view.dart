@@ -60,6 +60,7 @@ class ChatView extends GetView<ChatController> {
           if (index == 3) { // Index 3 adalah ikon profil
             Get.toNamed(AppRoutes.PROFILE); // Navigasi ke halaman profil
           }
+
         },
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.search), label: ''), // Ikon search

@@ -90,10 +90,10 @@ class AppPages {
       page: () => RoomDetailView(),
       binding: RoomDetailBinding(),
     ),
-    GetPage(
+     GetPage(
       name: AppRoutes.HOMEPAGE,
-      page: () => const HomepageView(),
-      binding: HomepageBinding(),
+      page: () => KosListItem(),
+      binding: KosBinding(),
     ),
   ];
 }
