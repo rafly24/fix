@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TransactionHistoryView extends StatelessWidget {
+  const TransactionHistoryView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -8,10 +10,10 @@ class TransactionHistoryView extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Text(
+        title: const Text(
           'Transaction History',
           style: TextStyle(color: Colors.black),
         ),
@@ -23,11 +25,11 @@ class TransactionHistoryView extends StatelessWidget {
             Container(
               width: 100,
               height: 100,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.green,
                 shape: BoxShape.circle,
               ),
-              child: Center(
+              child: const Center(
                 child: Text(
                   '?',
                   style: TextStyle(
@@ -38,7 +40,7 @@ class TransactionHistoryView extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: Text(
@@ -50,7 +52,7 @@ class TransactionHistoryView extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               'For more info click help.',
               style: TextStyle(
@@ -58,17 +60,17 @@ class TransactionHistoryView extends StatelessWidget {
                 fontSize: 14,
               ),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             ElevatedButton(
               onPressed: () {
                 // Add help functionality here
               },
-              child: Text('Help'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                textStyle: TextStyle(fontSize: 18),
+                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                textStyle: const TextStyle(fontSize: 18),
               ),
+              child: Text('Help'),
             ),
           ],
         ),

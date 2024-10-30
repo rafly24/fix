@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class StepperWidget extends StatelessWidget {
+  const StepperWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Wrap(

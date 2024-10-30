@@ -3,11 +3,13 @@
 import 'package:flutter/material.dart';
 
 class CheckoutView extends StatelessWidget {
+  const CheckoutView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Checkout'),
+        title: const Text('Checkout'),
       ),
       body: Column(
         children: [
@@ -21,8 +23,8 @@ class CheckoutView extends StatelessWidget {
 
   Widget BookingDetails() {
     return Container(
-      padding: EdgeInsets.all(16),
-      child: Text(
+      padding: const EdgeInsets.all(16),
+      child: const Text(
         'Booking Details',
         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
       ),
@@ -31,8 +33,8 @@ class CheckoutView extends StatelessWidget {
 
   Widget PaymentSummary() {
     return Container(
-      padding: EdgeInsets.all(16),
-      child: Text(
+      padding: const EdgeInsets.all(16),
+      child: const Text(
         'Payment Summary',
         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
       ),
@@ -45,7 +47,7 @@ class CheckoutView extends StatelessWidget {
         // Handle checkout action
         print('Checkout button pressed');
       },
-      child: Text('Proceed to Checkout'),
+      child: const Text('Proceed to Checkout'),
     );
   }
 }

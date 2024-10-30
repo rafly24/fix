@@ -4,36 +4,62 @@ import '../models/kos_models.dart';
 class KosListItem extends StatelessWidget {
   final KosModel kos;
 
-  const KosListItem({Key? key, required this.kos}) : super(key: key);
+  const KosListItem({super.key, required this.kos});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        // TODO: Navigate to detail page
-        // Get.toNamed('/kos-detail', arguments: kos);
-      },
-      child: Card(
-        margin: EdgeInsets.all(8),
-        child: Column(
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(kos.imageUrl, height: 150, width: double.infinity, fit: BoxFit.cover),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              // child: Image.network(
+              //   kos.imageUrl,
+              //   height: 100,
+              //   width: 100,
+              //   fit: BoxFit.cover,
+              // ),
+            ),
+            SizedBox(width: 8),
+            Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(kos.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Row(
+                    children: [
+                      Chip(
+                        label: Text('Best'),
+                        backgroundColor: Colors.red[200],
+                      ),
+                      SizedBox(width: 4),
+                      Chip(
+                        label: Text('Most Viewed'),
+                        backgroundColor: Colors.green[200],
+                      ),
+                    ],
+                  ),
+                  Text(
+                    kos.name,
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
                   Text(kos.location),
                   Text(kos.facilities.join(' - ')),
                   Row(
                     children: [
-                      Icon(Icons.star, color: Colors.yellow),
+                      Icon(Icons.star, color: Colors.yellow, size: 16),
+                      SizedBox(width: 4),
                       Text(kos.rating.toString()),
                     ],
                   ),
-                  Text('${kos.price}/bln', style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text(
+                    '${kos.price}/bln',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
             ),

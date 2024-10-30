@@ -7,12 +7,12 @@ class ProfileTile extends StatelessWidget {
   final Color? textColor;
 
   const ProfileTile({
-    Key? key,
+    super.key,
     required this.icon,
     required this.title,
     required this.onTap,
     this.textColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

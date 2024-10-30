@@ -13,7 +13,7 @@ class HomepageController extends GetxController {
 
   void fetchKos() async {
     // Simulate API call
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     kosList.value = [
       KosModel(
         name: 'Kos Putri BCT',

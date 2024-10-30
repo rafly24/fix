@@ -5,15 +5,17 @@ import '../controllers/not_paid_bills_controller.dart';
 import '../widgets/not_paid_bill_item.dart';
 
 class NotPaidBillsView extends GetView<NotPaidBillsController> {
+  const NotPaidBillsView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Get.back(),
         ),
-        title: Text('Your Bills', style: TextStyle(color: Colors.black)),
+        title: const Text('Your Bills', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         elevation: 0,
       ),
@@ -26,20 +28,20 @@ class NotPaidBillsView extends GetView<NotPaidBillsController> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () => controller.toggleFilter(false),
-                    child: Text('Not yet paid'),
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white, backgroundColor: Colors.green,
                     ),
+                    child: Text('Not yet paid'),
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Expanded(
                   child: OutlinedButton(
                     onPressed: () => Get.toNamed(AppRoutes.PAID_BILLS),
-                    child: Text('Already paid'),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: Colors.grey,
                     ),
+                    child: Text('Already paid'),
                   ),
                 ),
               ],

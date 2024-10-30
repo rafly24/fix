@@ -1,67 +1,114 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart'; // Assuming you are using GetX for navigation
-import '../models/kos_models.dart';
+import 'package:get/get.dart';
+import '../controllers/kos_controller.dart';
+import '../widgets/kost_list_item.dart';
 
-class KosListItem extends StatelessWidget {
-  final KosModel kos;
-
-  const KosListItem({Key? key, required this.kos}) : super(key: key);
+class HomepageView extends StatelessWidget {
+  final HomepageController controller = Get.put(HomepageController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Kos List'),
-      ),
-      body: GestureDetector(
-        onTap: () {
-          // Navigate to detail page
-          // Get.toNamed('/kos-detail', arguments: kos);
-        },
-        child: Card(
-          margin: EdgeInsets.all(8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Get.back(),
+        ),
+        title: Container(
+          height: 40,
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          decoration: BoxDecoration(
+            color: Colors.grey[200],
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Row(
             children: [
-              Image.network(kos.imageUrl, height: 150, width: double.infinity, fit: BoxFit.cover),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(kos.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                    Text(kos.location),
-                    Text(kos.facilities.join(' - ')),
-                    Row(
-                      children: [
-                        Icon(Icons.star, color: Colors.yellow),
-                        Text(kos.rating.toString()),
-                      ],
-                    ),
-                    Text('${kos.price}/bln', style: TextStyle(fontWeight: FontWeight.bold)),
-                  ],
+              Icon(Icons.search, color: Colors.black54),
+              SizedBox(width: 8),
+              Expanded(
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Search Kos...',
+                    border: InputBorder.none,
+                  ),
+                  onChanged: (value) {
+                    // Handle the search input
+                    print("Searching for: $value");
+                  },
                 ),
               ),
             ],
           ),
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.favorite_border, color: Colors.black),
+            onPressed: () {
+              // Handle favorite action
+            },
+          ),
+        ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.green, // Selected icon color
-        unselectedItemColor: Colors.grey, // Unselected icon color
-        currentIndex: 2, // Set initial index to chat icon
-        type: BottomNavigationBarType.fixed, // Type of BottomNavigationBar
-        onTap: (index) {
-          if (index == 3) { // Index 3 is the profile icon
-            Get.toNamed('/profile'); // Navigate to profile page
-          }
-          // Handle other indices as necessary
-        },
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: ''), // Search icon
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''), // Home icon
-          BottomNavigationBarItem(icon: Icon(Icons.chat_bubble), label: ''), // Chat icon
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: ''), // Profile icon
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            child: Row(
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    // Handle Filter button
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green, // Replace `primary` with `backgroundColor`
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Text('Filter'),
+                ),
+                SizedBox(width: 8),
+                OutlinedButton(
+                  onPressed: () {
+                    // Handle Managed by Rako button
+                  },
+                  style: OutlinedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Text('Managed by Rako'),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Text(
+              'Found 99+ Kos',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Expanded(
+            child: Obx(() {
+              if (controller.isLoading.value) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (controller.kosList.isEmpty) {
+                return const Center(child: Text('No Kos Available'));
+              } else {
+                return ListView.builder(
+                  itemCount: controller.kosList.length,
+                  itemBuilder: (context, index) {
+                    final kos = controller.kosList[index];
+                    return KosListItem(kos: kos);
+                  },
+                );
+              }
+            }),
+          ),
         ],
       ),
     );

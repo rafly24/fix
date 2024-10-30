@@ -1,6 +1,13 @@
 // lib/app/routes/app_pages.dart
 
 import 'package:get/get.dart';
+import 'package:manajement_kost/app/modules/homepage/views/homepage_view.dart';
+import 'package:manajement_kost/app/modules/login/bindings/login_page_binding.dart';
+import 'package:manajement_kost/app/modules/login/views/login_page_views.dart';
+import 'package:manajement_kost/app/modules/login_penyewa/bindings/login_penyewa_binding.dart';
+import 'package:manajement_kost/app/modules/login_penyewa/views/login_penyewa_view.dart';
+import 'package:manajement_kost/app/modules/signup/bindings/signup_binding.dart';
+import 'package:manajement_kost/app/modules/signup/view/signup_view.dart';
 import '../modules/chats/views/chat_view.dart';
 import '../modules/not_paid_bills/view/not_paid_bills_view.dart';
 import '../modules/paid_bills/view/paid_bills_view.dart';
@@ -12,11 +19,10 @@ import '../modules/settings/view/settings_view.dart';
 import '../modules/transaction_history/view/transaction_history_view.dart';
 import '../modules/checkout/views/checkout_view.dart';
 import '../modules/room_detail/views/room_detail_view.dart';
-import '../modules/homepage/views/homepage_view.dart';
 import 'app_routes.dart';
+import '../modules/splash_screen/views/splash_screen_view.dart';
 
 // Import semua views
-
 
 // Import semua bindings
 import '../modules/not_paid_bills/bindings/not_paid_bills_binding.dart';
@@ -31,7 +37,7 @@ import '../modules/riwayat_kost/bindings/riwayat_kost_binding.dart';
 import '../modules/settings/bindings/settings_binding.dart';
 import '../modules/homepage/bindings/homepage_binding.dart';
 import '../modules/transaction_history/bindings/transaction_history_binding.dart';
-
+import '../modules/splash_screen/bindings/splash_screen_binding.dart';
 
 class AppPages {
   static final routes = [
@@ -52,17 +58,17 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.PROFILE,
-      page: () => ProfileView(),
+      page: () => const ProfileView(),
       binding: ProfileBinding(),
     ),
     GetPage(
       name: AppRoutes.PERSONAL_INFO,
-      page: () => PersonalInfoView(),
+      page: () => const PersonalInfoView(),
       binding: PersonalInfoBinding(),
     ),
     GetPage(
       name: AppRoutes.RIWAYAT_KOST_NONE,
-      page: () => RiwayatKostNoneView(),
+      page: () => const RiwayatKostNoneView(),
       binding: RiwayatKostNoneBinding(),
     ),
     GetPage(
@@ -80,7 +86,7 @@ class AppPages {
       page: () => TransactionHistoryView(),
       binding: TransactionHistoryBinding(),
     ),
-     GetPage(
+    GetPage(
       name: AppRoutes.CHECKOUT,
       page: () => CheckoutView(),
       binding: CheckoutBinding(),
@@ -90,10 +96,30 @@ class AppPages {
       page: () => RoomDetailView(),
       binding: RoomDetailBinding(),
     ),
-     GetPage(
+    GetPage(
       name: AppRoutes.HOMEPAGE,
-      page: () => KosListItem(),
+      page: () => HomepageView(),
       binding: KosBinding(),
+    ),
+    GetPage(
+      name: '/splash',
+      page: () => SplashScreenView(),
+      binding: SplashScreenBinding(),
+    ),
+    GetPage(
+      name: '/login',
+      page: () => LoginPageView(),
+      binding: LoginPageBinding(),
+    ),
+     GetPage(
+      name: '/loginpenyewa',
+      page: () => LoginPenyewa(),
+      binding: LoginPenyewaBinding(),
+    ),
+    GetPage(
+      name: '/signup',
+      page: () => const SignUpView(),
+      binding: SignUpBinding(),
     ),
   ];
 }

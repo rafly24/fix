@@ -6,6 +6,8 @@ import '../widgets/room_detail_widgets.dart';
 class RoomDetailView extends StatelessWidget {
   final RoomDetailController controller = Get.find();
 
+  RoomDetailView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

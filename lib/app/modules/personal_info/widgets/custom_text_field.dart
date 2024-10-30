@@ -11,7 +11,7 @@ class CustomTextField extends StatelessWidget {
   final TextInputType? keyboardType;
 
   const CustomTextField({
-    Key? key,
+    super.key,
     required this.label,
     required this.initialValue,
     this.readOnly = false,
@@ -19,7 +19,7 @@ class CustomTextField extends StatelessWidget {
     this.onTap,
     this.onChanged,
     this.keyboardType,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

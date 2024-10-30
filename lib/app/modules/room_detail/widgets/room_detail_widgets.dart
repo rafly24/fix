@@ -4,7 +4,7 @@ import '../controllers/room_detail_controller.dart';
 class RoomDetailWidgets extends StatelessWidget {
   final RoomDetailController controller;
 
-  const RoomDetailWidgets({Key? key, required this.controller}) : super(key: key);
+  const RoomDetailWidgets({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {

@@ -7,7 +7,7 @@ class ImagePickerWidget extends StatelessWidget {
   final Function(String) onImagePicked;
   final String? imagePath;
 
-  ImagePickerWidget({required this.onImagePicked, this.imagePath});
+  const ImagePickerWidget({super.key, required this.onImagePicked, this.imagePath});
 
   Future<void> _pickImage(BuildContext context) async {
     final picker = ImagePicker();
@@ -29,14 +29,14 @@ class ImagePickerWidget extends StatelessWidget {
           width: double.infinity,
           fit: BoxFit.cover,
         )
-            : Placeholder(
+            : const Placeholder(
           fallbackHeight: 200,
           fallbackWidth: double.infinity,
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         ElevatedButton(
           onPressed: () => _pickImage(context),
-          child: Text('Pilih Gambar'),
+          child: const Text('Pilih Gambar'),
         ),
       ],
     );

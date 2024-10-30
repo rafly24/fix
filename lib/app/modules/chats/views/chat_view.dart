@@ -5,20 +5,22 @@ import '../controllers/chat_controller.dart';
 import '../widgets/chat_tile.dart';
 
 class ChatView extends GetView<ChatController> {
+  const ChatView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chats', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        title: const Text('Chats', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.white,
         elevation: 0,
         actions: [
           IconButton(
-            icon: Icon(Icons.help_outline, color: Colors.black),
+            icon: const Icon(Icons.help_outline, color: Colors.black),
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(Icons.settings, color: Colors.black),
+            icon: const Icon(Icons.settings, color: Colors.black),
             onPressed: () {},
           ),
         ],
@@ -30,7 +32,7 @@ class ChatView extends GetView<ChatController> {
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Search...',
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
                   borderSide: BorderSide.none,
@@ -62,7 +64,7 @@ class ChatView extends GetView<ChatController> {
           }
 
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.search), label: ''), // Ikon search
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''), // Ikon home
           BottomNavigationBarItem(icon: Icon(Icons.chat_bubble), label: ''), // Ikon chat

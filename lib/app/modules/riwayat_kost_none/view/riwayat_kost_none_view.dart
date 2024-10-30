@@ -5,7 +5,7 @@ import '../controllers/riwayat_kost_none_controller.dart';
 import '../widgets/empty_state_widget.dart';
 
 class RiwayatKostNoneView extends GetView<RiwayatKostNoneController> {
-  const RiwayatKostNoneView({Key? key}) : super(key: key);
+  const RiwayatKostNoneView({super.key});
 
   @override
   Widget build(BuildContext context) {

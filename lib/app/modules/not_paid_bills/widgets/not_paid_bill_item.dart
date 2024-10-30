@@ -4,22 +4,22 @@ import '../controllers/not_paid_bills_controller.dart';
 class NotPaidBillItem extends StatelessWidget {
   final Bill bill;
 
-  const NotPaidBillItem({Key? key, required this.bill}) : super(key: key);
+  const NotPaidBillItem({super.key, required this.bill});
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Not yet Paid', style: TextStyle(color: Colors.grey)),
+                const Text('Not yet Paid', style: TextStyle(color: Colors.grey)),
                 Text(
                   bill.status,
                   style: TextStyle(
@@ -29,22 +29,22 @@ class NotPaidBillItem extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 8),
-            Text('Due ${bill.dueDate}', style: TextStyle(fontWeight: FontWeight.bold)),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
+            Text('Due ${bill.dueDate}', style: const TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '${bill.amount.toStringAsFixed(0)}',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  bill.amount.toStringAsFixed(0),
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 ElevatedButton(
                   onPressed: bill.isPayButtonEnabled ? () {} : null,
-                  child: Text('Pay'),
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white, backgroundColor: bill.isPayButtonEnabled ? Colors.green : Colors.grey,
                   ),
+                  child: Text('Pay'),
                 ),
               ],
             ),

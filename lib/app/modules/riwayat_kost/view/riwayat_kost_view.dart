@@ -4,6 +4,8 @@ import '../controllers/riwayat_kost_controller.dart';
 import '../widgets/kost_card_widget.dart';
 
 class RiwayatKostView extends GetView<RiwayatKostController> {
+  const RiwayatKostView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,11 +14,11 @@ class RiwayatKostView extends GetView<RiwayatKostController> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.chevron_left, size: 32, color: Colors.black),
+          icon: const Icon(Icons.chevron_left, size: 32, color: Colors.black),
           onPressed: () => Get.back(),
         ),
         leadingWidth: 48,
-        title: Text(
+        title: const Text(
           'Submission History',
           style: TextStyle(
             color: Colors.black,
@@ -25,7 +27,7 @@ class RiwayatKostView extends GetView<RiwayatKostController> {
           ),
         ),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(48),
+          preferredSize: const Size.fromHeight(48),
           child: Align(
             alignment: Alignment.centerLeft,
             child: buildTabBar(),
@@ -39,13 +41,13 @@ class RiwayatKostView extends GetView<RiwayatKostController> {
   Widget buildTabBar() {
     return Container(
       height: 48,
-      padding: EdgeInsets.only(left: 16),
+      padding: const EdgeInsets.only(left: 16),
       child: Row(
         children: [
           buildTabItem('History', 0),
-          SizedBox(width: 24),
+          const SizedBox(width: 24),
           buildTabItem('Draft', 1),
-          SizedBox(width: 24),
+          const SizedBox(width: 24),
           buildTabItem('Just Viewed', 2),
         ],
       ),
@@ -72,7 +74,7 @@ class RiwayatKostView extends GetView<RiwayatKostController> {
                 height: 3,
                 width: 40,
                 color: Colors.green,
-                margin: EdgeInsets.only(top: 8),
+                margin: const EdgeInsets.only(top: 8),
               ),
           ],
         ),
@@ -84,7 +86,7 @@ class RiwayatKostView extends GetView<RiwayatKostController> {
     switch (controller.selectedTab.value) {
       case 0:
         return ListView(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           children: [
             KostCardWidget(
               title: 'Kos Putra BCT',
@@ -96,7 +98,7 @@ class RiwayatKostView extends GetView<RiwayatKostController> {
               statusColor: Colors.green,
               onChatPressed: () {},
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             KostCardWidget(
               title: 'Kos Putra BCT',
               imageUrl: 'assets/kamar2.jpg',
@@ -111,7 +113,7 @@ class RiwayatKostView extends GetView<RiwayatKostController> {
           ],
         );
       default:
-        return Center(child: Text('No content for this tab yet'));
+        return const Center(child: Text('No content for this tab yet'));
     }
   }
 }

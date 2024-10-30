@@ -13,7 +13,7 @@ class KostCardWidget extends StatelessWidget {
   final String? paymentExpiry;
 
   const KostCardWidget({
-    Key? key,
+    super.key,
     required this.title,
     required this.imageUrl,
     required this.isConfirmed,
@@ -24,7 +24,7 @@ class KostCardWidget extends StatelessWidget {
     this.onChatPressed,
     this.onPayPressed,
     this.paymentExpiry,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class KostCardWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -45,7 +45,7 @@ class KostCardWidget extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -58,27 +58,27 @@ class KostCardWidget extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         title,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       buildInfoRow(Icons.check_circle_outline, 'Confirmed Room'),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       buildInfoRow(
                         Icons.calendar_today,
                         'Date of Entry',
                         trailing: dateOfEntry,
                       ),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       buildInfoRow(
                         Icons.access_time,
                         'Duration',
@@ -90,39 +90,39 @@ class KostCardWidget extends StatelessWidget {
               ],
             ),
             if (paymentExpiry != null) ...[
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Text(
                 'Payment expires $paymentExpiry',
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.red,
                   fontSize: 12,
                 ),
               ),
             ],
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             if (onPayPressed != null)
               ElevatedButton(
                 onPressed: onPayPressed,
-                child: Text('Pay Now'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
-                  minimumSize: Size(double.infinity, 40),
+                  minimumSize: const Size(double.infinity, 40),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
+                child: Text('Pay Now'),
               )
             else if (onChatPressed != null)
               OutlinedButton(
                 onPressed: onChatPressed,
-                child: Text('Chat Owner'),
                 style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.green, side: BorderSide(color: Colors.green),
-                  minimumSize: Size(double.infinity, 40),
+                  foregroundColor: Colors.green, side: const BorderSide(color: Colors.green),
+                  minimumSize: const Size(double.infinity, 40),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
+                child: Text('Chat Owner'),
               ),
           ],
         ),
@@ -134,16 +134,16 @@ class KostCardWidget extends StatelessWidget {
     return Row(
       children: [
         Icon(icon, size: 16, color: Colors.grey),
-        SizedBox(width: 4),
+        const SizedBox(width: 4),
         Text(
           text,
-          style: TextStyle(color: Colors.grey, fontSize: 12),
+          style: const TextStyle(color: Colors.grey, fontSize: 12),
         ),
         if (trailing != null) ...[
-          Spacer(),
+          const Spacer(),
           Text(
             trailing,
-            style: TextStyle(color: Colors.grey, fontSize: 12),
+            style: const TextStyle(color: Colors.grey, fontSize: 12),
           ),
         ],
       ],

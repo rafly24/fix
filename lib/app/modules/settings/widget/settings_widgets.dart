@@ -4,14 +4,14 @@ import '../controller/settings_controller.dart';
 
 Widget buildNotificationSection(SettingsController controller) {
   return Card(
-    margin: EdgeInsets.symmetric(horizontal: 16),
+    margin: const EdgeInsets.symmetric(horizontal: 16),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     child: Padding(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          const Row(
             children: [
               Icon(Icons.notifications_none, color: Colors.black),
               SizedBox(width: 8),
@@ -20,7 +20,7 @@ Widget buildNotificationSection(SettingsController controller) {
               Icon(Icons.keyboard_arrow_up, color: Colors.black),
             ],
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Obx(() => buildCheckboxListTile(
             'Recommendations via mail',
             controller.emailRecommendations.value,
@@ -39,11 +39,11 @@ Widget buildNotificationSection(SettingsController controller) {
 
 Widget buildDeleteAccountSection(SettingsController controller) {
   return Card(
-    margin: EdgeInsets.symmetric(horizontal: 16),
+    margin: const EdgeInsets.symmetric(horizontal: 16),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     child: ListTile(
-      leading: Icon(Icons.delete_forever, color: Colors.red),
-      title: Text('Delete Account', style: TextStyle(color: Colors.red)),
+      leading: const Icon(Icons.delete_forever, color: Colors.red),
+      title: const Text('Delete Account', style: TextStyle(color: Colors.red)),
       onTap: () => controller.showDeleteConfirmationDialog(),
     ),
   );

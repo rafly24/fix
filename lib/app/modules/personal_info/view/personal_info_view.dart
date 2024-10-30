@@ -5,7 +5,7 @@ import '../controllers/personal_info_controller.dart';
 import '../widgets/custom_text_field.dart';
 
 class PersonalInfoView extends GetView<PersonalInfoController> {
-  const PersonalInfoView({Key? key}) : super(key: key);
+  const PersonalInfoView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class PersonalInfoView extends GetView<PersonalInfoController> {
                             ? Container() // Jika foto sudah diubah, tampilkan tidak ada tulisan
                             : GestureDetector(
                           onTap: controller.changePhoto,
-                          child: Text(
+                          child: const Text(
                             'Change Photo',
                             style: TextStyle(
                               color: Colors.blue,

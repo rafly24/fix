@@ -13,6 +13,8 @@ abstract class AppRoutes {
   static const CHECKOUT = '/checkout';
   static const ROOM_DETAIL = '/room-detail';
   static const HOMEPAGE = '/homepage';
-  static const KOS = '/kos';
-  static const KOS_DETAIL = '/kos-detail';
+  static const LOGIN = '/login';
+  static const LOGINPENYEWA = '/login-penyewa';
+  static const SPLASH = '/splash';
+  static const SIGNUP = '/signup';
 }
