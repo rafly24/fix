@@ -70,7 +70,7 @@ class TransactionHistoryView extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 textStyle: const TextStyle(fontSize: 18),
               ),
-              child: Text('Help'),
+              child: const Text('Help'),
             ),
           ],
         ),

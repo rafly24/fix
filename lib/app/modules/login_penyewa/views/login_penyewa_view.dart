@@ -8,15 +8,17 @@ import '../../../routes/app_routes.dart';
 class LoginPenyewa extends StatelessWidget {
   final LoginPenyewaController controller = Get.put(LoginPenyewaController());
 
+  LoginPenyewa({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Get.back(),
         ),
-        title: Text('Login Penyewa', style: TextStyle(color: Colors.black)),
+        title: const Text('Login Penyewa', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -26,8 +28,8 @@ class LoginPenyewa extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             ElevatedButton.icon(
-              icon: Icon(Icons.g_mobiledata, color: Colors.green, size: 30),
-              label: Text('Sign in with Google'),
+              icon: const Icon(Icons.g_mobiledata, color: Colors.green, size: 30),
+              label: const Text('Sign in with Google'),
               onPressed: () async {
                 await controller.signInWithGoogle();
               },
@@ -39,22 +41,22 @@ class LoginPenyewa extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Row(
+            const SizedBox(height: 20),
+            const Row(
               children: [
                 Expanded(child: Divider()),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text('or', style: TextStyle(color: Colors.grey)),
                 ),
                 Expanded(child: Divider()),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TextField(
               controller: controller.emailController,
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.email, color: Colors.green),
+                prefixIcon: const Icon(Icons.email, color: Colors.green),
                 hintText: 'example123@example.com',
                 filled: true,
                 fillColor: Colors.grey[200],
@@ -64,12 +66,12 @@ class LoginPenyewa extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Obx(() => TextField(
                   controller: controller.passwordController,
                   obscureText: controller.obscurePassword.value,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.lock, color: Colors.grey),
+                    prefixIcon: const Icon(Icons.lock, color: Colors.grey),
                     hintText: 'x x x x x x x x x x',
                     suffixIcon: IconButton(
                       icon: Icon(controller.obscurePassword.value
@@ -92,39 +94,39 @@ class LoginPenyewa extends StatelessWidget {
                       onChanged: controller.toggleRememberPassword,
                       activeColor: Colors.green,
                     ),
-                    Text('Remember Password'),
+                    const Text('Remember Password'),
                   ],
                 )),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
-              child: Obx(() => controller.isLoading.value
-                  ? CircularProgressIndicator(color: Colors.white)
-                  : Text('Sign-in')),
               onPressed:
                   controller.isLoading.value ? null : controller.login,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
                 foregroundColor: Colors.white,
-                padding: EdgeInsets.symmetric(vertical: 15),
+                padding: const EdgeInsets.symmetric(vertical: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
+              child: Obx(() => controller.isLoading.value
+                  ? CircularProgressIndicator(color: Colors.white)
+                  : Text('Sign-in')),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Don't have an account? "),
+                const Text("Don't have an account? "),
                 TextButton(
-                  child: Text('Sign up now',
+                  child: const Text('Sign up now',
                       style: TextStyle(color: Colors.green)),
                   onPressed: () => Get.toNamed(AppRoutes.SIGNUP),
                 ),
               ],
             ),
-            SizedBox(height: 10),
-            Center(
+            const SizedBox(height: 10),
+            const Center(
                 // child: TextButton(
                 //   child: Text('Forgot Password?',
                 //       style: TextStyle(color: Colors.green)),

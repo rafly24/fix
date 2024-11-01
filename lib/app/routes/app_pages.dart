@@ -43,17 +43,17 @@ class AppPages {
   static final routes = [
     GetPage(
       name: AppRoutes.NOT_PAID_BILLS,
-      page: () => NotPaidBillsView(),
+      page: () => const NotPaidBillsView(),
       binding: NotPaidBillsBinding(),
     ),
     GetPage(
       name: AppRoutes.PAID_BILLS,
-      page: () => PaidBillsView(),
+      page: () => const PaidBillsView(),
       binding: PaidBillsBinding(),
     ),
     GetPage(
       name: AppRoutes.CHATS,
-      page: () => ChatView(),
+      page: () => const ChatView(),
       binding: ChatBinding(),
     ),
     GetPage(
@@ -73,7 +73,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.RIWAYAT_KOST,
-      page: () => RiwayatKostView(),
+      page: () => const RiwayatKostView(),
       binding: RiwayatKostBinding(),
     ),
     GetPage(
@@ -83,12 +83,12 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.TRANSACTION_HISTORY,
-      page: () => TransactionHistoryView(),
+      page: () => const TransactionHistoryView(),
       binding: TransactionHistoryBinding(),
     ),
     GetPage(
       name: AppRoutes.CHECKOUT,
-      page: () => CheckoutView(),
+      page: () => const CheckoutView(),
       binding: CheckoutBinding(),
     ),
     GetPage(

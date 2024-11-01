@@ -110,7 +110,7 @@ class KostCardWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: Text('Pay Now'),
+                child: const Text('Pay Now'),
               )
             else if (onChatPressed != null)
               OutlinedButton(
@@ -122,7 +122,7 @@ class KostCardWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: Text('Chat Owner'),
+                child: const Text('Chat Owner'),
               ),
           ],
         ),

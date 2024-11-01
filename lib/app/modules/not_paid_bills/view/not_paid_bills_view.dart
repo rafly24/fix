@@ -31,7 +31,7 @@ class NotPaidBillsView extends GetView<NotPaidBillsController> {
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white, backgroundColor: Colors.green,
                     ),
-                    child: Text('Not yet paid'),
+                    child: const Text('Not yet paid'),
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -41,7 +41,7 @@ class NotPaidBillsView extends GetView<NotPaidBillsController> {
                     style: OutlinedButton.styleFrom(
                       foregroundColor: Colors.grey,
                     ),
-                    child: Text('Already paid'),
+                    child: const Text('Already paid'),
                   ),
                 ),
               ],

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../models/kos_models.dart';
+import '../../../routes/app_routes.dart'; // Pastikan import ini benar
 
 class KosListItem extends StatelessWidget {
   final KosModel kos;
@@ -8,59 +10,47 @@ class KosListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
+    return InkWell(
+      onTap: () {
+        print("Navigating to detail..."); // Debug print
+        Get.toNamed(AppRoutes.ROOM_DETAIL,
+          arguments: {
+            'name': kos.name,
+            'price': kos.price,
+            'description': kos.address, // atau deskripsi lain jika ada
+            // 'imageUrl': kos.imageUrl ?? '', // jika ada
+          },
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Colors.grey[300]!),
+        ),
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              // child: Image.network(
-              //   kos.imageUrl,
-              //   height: 100,
-              //   width: 100,
-              //   fit: BoxFit.cover,
-              // ),
+            Text(
+              kos.name,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            SizedBox(width: 8),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Chip(
-                        label: Text('Best'),
-                        backgroundColor: Colors.red[200],
-                      ),
-                      SizedBox(width: 4),
-                      Chip(
-                        label: Text('Most Viewed'),
-                        backgroundColor: Colors.green[200],
-                      ),
-                    ],
-                  ),
-                  Text(
-                    kos.name,
-                    style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  Text(kos.location),
-                  Text(kos.facilities.join(' - ')),
-                  Row(
-                    children: [
-                      Icon(Icons.star, color: Colors.yellow, size: 16),
-                      SizedBox(width: 4),
-                      Text(kos.rating.toString()),
-                    ],
-                  ),
-                  Text(
-                    '${kos.price}/bln',
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ],
+            const SizedBox(height: 4),
+            Text(
+              kos.address,
+              style: TextStyle(color: Colors.grey[600]),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Rp ${kos.price}/bln',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.green,
               ),
             ),
           ],

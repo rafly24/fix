@@ -44,7 +44,7 @@ class NotPaidBillItem extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white, backgroundColor: bill.isPayButtonEnabled ? Colors.green : Colors.grey,
                   ),
-                  child: Text('Pay'),
+                  child: const Text('Pay'),
                 ),
               ],
             ),

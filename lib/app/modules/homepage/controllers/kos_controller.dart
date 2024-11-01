@@ -2,29 +2,39 @@ import 'package:get/get.dart';
 import '../models/kos_models.dart';
 
 class HomepageController extends GetxController {
+  var isLoading = false.obs;
   var kosList = <KosModel>[].obs;
-  var isLoading = true.obs;
 
   @override
   void onInit() {
     super.onInit();
-    fetchKos();
+    fetchKosList();
   }
 
-  void fetchKos() async {
-    // Simulate API call
-    await Future.delayed(const Duration(seconds: 2));
-    kosList.value = [
-      KosModel(
-        name: 'Kos Putri BCT',
-        location: 'BCT',
-        facilities: ['Wifi', 'Meja', 'Lemari', 'Kasur'],
-        rating: 4.9,
-        price: 500000,
-        imageUrl: 'https://example.com/kos1.jpg',
-      ),
-      // Add more KosModel objects here
-    ];
-    isLoading.value = false;
+  void fetchKosList() {
+    isLoading.value = true;
+    try {
+      // Simulasi data kos
+      kosList.value = [
+        KosModel(
+          id: '1',
+          name: 'Kos Putri BCT',
+          address: 'Jl. Mrg. Lreng, Kapur',
+          price: '500000',
+          imageUrl: 'assets/images/kos1.jpg',
+          facilities: ['AC', 'Wifi', 'Kamar Mandi Dalam'],
+          type: 'Putri',
+        ),
+        // Tambahkan data kos lainnya
+      ];
+    } catch (e) {
+      print('Error fetching kos list: $e');
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  void navigateToKosDetail(KosModel kos) {
+    Get.toNamed('/kos-detail', arguments: kos);
   }
 }

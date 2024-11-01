@@ -6,6 +6,8 @@ import '../widgets/kost_list_item.dart';
 class HomepageView extends StatelessWidget {
   final HomepageController controller = Get.put(HomepageController());
 
+  HomepageView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +15,7 @@ class HomepageView extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Get.back(),
         ),
         title: Container(
@@ -25,11 +27,11 @@ class HomepageView extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Icon(Icons.search, color: Colors.black54),
-              SizedBox(width: 8),
+              const Icon(Icons.search, color: Colors.black54),
+              const SizedBox(width: 8),
               Expanded(
                 child: TextField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'Search Kos...',
                     border: InputBorder.none,
                   ),
@@ -44,7 +46,7 @@ class HomepageView extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.favorite_border, color: Colors.black),
+            icon: const Icon(Icons.favorite_border, color: Colors.black),
             onPressed: () {
               // Handle favorite action
             },
@@ -68,9 +70,9 @@ class HomepageView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Text('Filter'),
+                  child: const Text('Filter'),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 OutlinedButton(
                   onPressed: () {
                     // Handle Managed by Rako button
@@ -80,13 +82,13 @@ class HomepageView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Text('Managed by Rako'),
+                  child: const Text('Managed by Rako'),
                 ),
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
               'Found 99+ Kos',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
