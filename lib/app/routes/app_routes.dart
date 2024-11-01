@@ -17,4 +17,7 @@ abstract class AppRoutes {
   static const LOGINPENYEWA = '/login-penyewa';
   static const SPLASH = '/splash';
   static const SIGNUP = '/signup';
+  static const CHAT_PEMILIK = '/chatpemilik';
+  static const PAYMENT = '/payment';
+  static const HOME = '/home';
 }

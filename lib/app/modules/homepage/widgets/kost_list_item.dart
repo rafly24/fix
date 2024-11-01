@@ -14,12 +14,6 @@ class KosListItem extends StatelessWidget {
       onTap: () {
         print("Navigating to detail..."); // Debug print
         Get.toNamed(AppRoutes.ROOM_DETAIL,
-          arguments: {
-            'name': kos.name,
-            'price': kos.price,
-            'description': kos.address, // atau deskripsi lain jika ada
-            // 'imageUrl': kos.imageUrl ?? '', // jika ada
-          },
         );
       },
       child: Container(

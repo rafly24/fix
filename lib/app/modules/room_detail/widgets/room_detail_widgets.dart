@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../controllers/room_detail_controller.dart';
 import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../../routes/app_routes.dart';
 
 class RoomDetailWidgets extends StatelessWidget {
   final RoomDetailController controller;
@@ -16,18 +17,60 @@ class RoomDetailWidgets extends StatelessWidget {
         // Gambar Utama
         Stack(
           children: [
-            // Image.network(
-            //   controller.imageUrl.value,
-            //   width: double.infinity,
-            //   height: 250,
-            //   fit: BoxFit.cover,
-            // ),
+            Container(
+              width: double.infinity,
+              height: 200,
+              color: Colors.grey[300],
+            ),
+            // Tombol back dan favorite
             Positioned(
-              top: 40,
-              left: 10,
-              child: IconButton(
-                icon: const Icon(Icons.arrow_back, color: Colors.white),
-                onPressed: () => Get.back(),
+              top: 16,
+              left: 16,
+              right: 16,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                    ),
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back, color: Colors.black),
+                      onPressed: () => Get.back(),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                        ),
+                        child: IconButton(
+                          icon: Icon(Icons.share, color: Colors.black),
+                          onPressed: () => controller.toggleShareMenu(),
+                        ),
+                      ),
+                      SizedBox(width: 8),
+                      Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                        ),
+                        child: Obx(() => IconButton(
+                              icon: Icon(
+                                Icons.favorite,
+                                color: controller.isFavorite.value
+                                    ? Colors.red
+                                    : Colors.black,
+                              ),
+                              onPressed: () => controller.toggleFavorite(),
+                            )),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],
@@ -39,22 +82,65 @@ class RoomDetailWidgets extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Row(
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Text(
+                      'Kosanan',
+                      style: TextStyle(color: Colors.white, fontSize: 12),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 8),
               Text(
                 controller.title.value,
-                style: const TextStyle(
-                  fontSize: 24,
+                style: TextStyle(
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
-              Text(
-                'Rp ${controller.price.value}/bulan',
-                style: const TextStyle(
-                  fontSize: 18,
-                  color: Colors.green,
-                ),
+              SizedBox(height: 8),
+              Row(
+                children: [
+                  Icon(Icons.location_on, size: 16, color: Colors.grey),
+                  SizedBox(width: 4),
+                  Text(
+                    'Jl. Raya Jetis',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                ],
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
+              Row(
+                children: [
+                  CircleAvatar(
+                    radius: 20,
+                    backgroundColor: Colors.grey[400],
+                    child: Icon(Icons.person, color: Colors.white),
+                  ),
+                  SizedBox(width: 8),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Kos managed by RaKo',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        'Just got online',
+                        style: TextStyle(color: Colors.grey, fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
               Text(
                 controller.description.value,
                 style: TextStyle(
@@ -66,32 +152,76 @@ class RoomDetailWidgets extends StatelessWidget {
           ),
         ),
 
-        // Spacer untuk mendorong bottom navigation ke bawah
-        const Spacer(),
+        Spacer(),
 
         // Bottom Navigation
+        // Bottom Navigation
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(color: Colors.grey[300]!),
-            ),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 1,
+                blurRadius: 4,
+              ),
+            ],
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildNavButton(Icons.call, 'Telepon'),
-              _buildNavButton(Icons.message, 'Pesan'),
-              _buildNavButton(Icons.share, 'Bagikan', onTap: () {
-                controller.toggleShareMenu();
-              }),
-              Obx(() => _buildNavButton(
-                    Icons.favorite,
-                    'Favorit',
-                    color:
-                        controller.isFavorite.value ? Colors.red : Colors.grey,
-                    onTap: () => controller.toggleFavorite(),
-                  )),
+              Expanded(
+                flex: 2,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Rp ${controller.price.value}',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'Estimated Payment',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Get.toNamed(AppRoutes.CHAT_PEMILIK);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        Colors.green, // Menggunakan backgroundColor
+                    padding: EdgeInsets.symmetric(vertical: 12),
+                  ),
+                  child: Text('Chat pemilik'),
+                ),
+              ),
+              SizedBox(width: 8),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () => Get.toNamed(
+                    AppRoutes.CHECKOUT,
+                    arguments: {
+                      'kosName': controller.title.value,
+                      'price': controller.price.value,
+                      'location': 'Jl. Raya Jetis',
+                      'facilities': 'Meja - Lemari - Kasur',
+                      'imageUrl': controller.imageUrl.value,
+                    },
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    padding: EdgeInsets.symmetric(vertical: 12),
+                  ),
+                  child: Text('Check out'),
+                ),
+              ),
             ],
           ),
         ),
@@ -99,7 +229,7 @@ class RoomDetailWidgets extends StatelessWidget {
         // Share Menu
         Obx(() => controller.isShareMenuVisible.value
             ? Container(
-                padding: const EdgeInsets.symmetric(vertical: 16),
+                padding: EdgeInsets.symmetric(vertical: 16),
                 decoration: BoxDecoration(
                   border: Border(
                     top: BorderSide(color: Colors.grey[300]!),
@@ -109,37 +239,14 @@ class RoomDetailWidgets extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     _buildShareButton(Icons.copy, 'Salin'),
-                    _buildShareButton(
-                        FontAwesomeIcons.whatsapp, 'WhatsApp'), // Ubah ini
-                    _buildShareButton(
-                        FontAwesomeIcons.facebook, 'Facebook'), // Ubah ini
+                    _buildShareButton(FontAwesomeIcons.whatsapp, 'WhatsApp'),
+                    _buildShareButton(FontAwesomeIcons.facebook, 'Facebook'),
                     _buildShareButton(Icons.more_horiz, 'Lainnya'),
                   ],
                 ),
               )
-            : const SizedBox()),
+            : SizedBox()),
       ],
-    );
-  }
-
-  Widget _buildNavButton(IconData icon, String label,
-      {Color? color, VoidCallback? onTap}) {
-    return InkWell(
-      onTap: onTap,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, color: color ?? Colors.grey),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              color: Colors.grey[600],
-            ),
-          ),
-        ],
-      ),
     );
   }
 
@@ -148,17 +255,17 @@ class RoomDetailWidgets extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          padding: const EdgeInsets.all(8),
+          padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: Colors.grey[200],
             shape: BoxShape.circle,
           ),
           child: Icon(icon, size: 20),
         ),
-        const SizedBox(height: 4),
+        SizedBox(height: 4),
         Text(
           label,
-          style: const TextStyle(fontSize: 12),
+          style: TextStyle(fontSize: 12),
         ),
       ],
     );

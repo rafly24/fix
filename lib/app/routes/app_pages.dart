@@ -1,11 +1,18 @@
 // lib/app/routes/app_pages.dart
 
 import 'package:get/get.dart';
+import 'package:manajement_kost/app/modules/chat_pemilik/binding/chat_pemilik_binding.dart';
+import 'package:manajement_kost/app/modules/chat_pemilik/view/chat_pemilik_view.dart';
+import 'package:manajement_kost/app/modules/date_picker/binding/checkout_binding.dart';
+import 'package:manajement_kost/app/modules/home/bindings/my_kos_binding.dart';
+import 'package:manajement_kost/app/modules/home/views/my_kos_view.dart';
 import 'package:manajement_kost/app/modules/homepage/views/homepage_view.dart';
 import 'package:manajement_kost/app/modules/login/bindings/login_page_binding.dart';
 import 'package:manajement_kost/app/modules/login/views/login_page_views.dart';
 import 'package:manajement_kost/app/modules/login_penyewa/bindings/login_penyewa_binding.dart';
 import 'package:manajement_kost/app/modules/login_penyewa/views/login_penyewa_view.dart';
+import 'package:manajement_kost/app/modules/payment/binding/payment_binding.dart';
+import 'package:manajement_kost/app/modules/payment/view/payment_view.dart';
 import 'package:manajement_kost/app/modules/signup/bindings/signup_binding.dart';
 import 'package:manajement_kost/app/modules/signup/view/signup_view.dart';
 import '../modules/chats/views/chat_view.dart';
@@ -29,7 +36,6 @@ import '../modules/not_paid_bills/bindings/not_paid_bills_binding.dart';
 import '../modules/paid_bills/bindings/paid_bills_binding.dart';
 import '../modules/chats/bindings/chat_binding.dart';
 import '../modules/room_detail/bindings/room_detail_binding.dart';
-import '../modules/checkout/bindings/checkout_binding.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/personal_info/bindings/personal_info_binding.dart';
 import '../modules/riwayat_kost_none/bindings/riwayat_kost_none_binding.dart';
@@ -88,7 +94,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.CHECKOUT,
-      page: () => const CheckoutView(),
+      page: () => CheckoutView(),
       binding: CheckoutBinding(),
     ),
     GetPage(
@@ -120,6 +126,21 @@ class AppPages {
       name: '/signup',
       page: () => const SignUpView(),
       binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: '/chatpemilik',
+      page: () => ChatPemilikView(),
+      binding: ChatPemilikBinding(),
+    ),
+    GetPage(
+      name: '/payment',
+      page: () => PaymentView(),
+      binding: PaymentBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.HOME,
+      page: () =>  MyKosView() ,
+      binding: MyKosBinding(),
     ),
   ];
 }

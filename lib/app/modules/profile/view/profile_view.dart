@@ -82,7 +82,6 @@ class ProfileView extends GetView<ProfileController> {
                 ],
               ),
             ),
-            // Submission and Transaction History
             ProfileTile(
               icon: Icons.home,
               title: 'Submission history',
@@ -98,7 +97,6 @@ class ProfileView extends GetView<ProfileController> {
               title: 'Setting',
               onTap: () => Get.toNamed(AppRoutes.SETTINGS),
             ),
-            // Log Out with Red Text
             ProfileTile(
               icon: Icons.logout,
               title: 'Log out account',
@@ -106,43 +104,50 @@ class ProfileView extends GetView<ProfileController> {
               onTap: () => _showLogOutConfirmationDialog(context),
             ),
             const Spacer(),
-            // Bottom Navigation Bar
-            Container(
-              height: 60,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.1),
-                    spreadRadius: 1,
-                    blurRadius: 5,
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.search),
-                    onPressed: () => Get.toNamed(AppRoutes.HOMEPAGE),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.home),
-                    onPressed: () {},
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.chat_bubble_outline),
-                    onPressed: () => Get.toNamed(AppRoutes.CHATS),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.person, color: Colors.green),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.grey,
+        currentIndex: 3, // Index 3 untuk Profile
+        type: BottomNavigationBarType.fixed,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              Get.toNamed(AppRoutes.HOMEPAGE);
+              break;
+            case 1:
+              Get.toNamed(AppRoutes.HOME);
+              break;
+            case 2:
+              Get.toNamed(AppRoutes.CHATS);
+              break;
+            case 3:
+              // Sudah di halaman profile
+              break;
+          }
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat_bubble_outline),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: '',
+          ),
+        ],
       ),
     );
   }
@@ -154,13 +159,13 @@ class ProfileView extends GetView<ProfileController> {
         content: const Text('Are you sure you want to log out?'),
         actions: [
           TextButton(
-            onPressed: () => Get.back(), // Close the dialog
+            onPressed: () => Get.back(),
             child: const Text('Cancel'),
           ),
           TextButton(
             onPressed: () {
-              controller.logOut(); // Call the logOut method
-              Get.back(); // Close the dialog
+              controller.logOut();
+              Get.back();
             },
             child: const Text('Log out', style: TextStyle(color: Colors.red)),
           ),
